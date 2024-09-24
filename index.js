@@ -1,4 +1,3 @@
-// index.js
 const express = require('express');
 const admin = require('firebase-admin');
 
@@ -7,7 +6,6 @@ const port = 3000;
 
 app.use(express.json());
 
-// Initialize Firebase Admin SDK
 const serviceAccount = require('./.firebase-key.json');
 
 admin.initializeApp({
@@ -31,8 +29,6 @@ const authenticateToken = async (req, res, next) => {
     res.status(403).send('Unauthorized');
   }
 };
-
-
 
 app.get('/api/test', (req, res)=>{
     res.send('This is a test');
@@ -70,6 +66,32 @@ app.post('/api/createUser', async (req, res) => {
       });
     }
   });
+
+
+app.post('/api/signin', async (req, res) => {
+const { email, password } = req.body;
+
+console.log(req.body)
+
+if (!email || !password) {
+    return res.status(400).send('Email and password are required.');
+}
+
+try {
+    const userCredential = await admin.auth().signInWithEmailAndPassword(email, password);
+    const idToken = await userCredential.user.getIdToken();
+
+    res.status(200).json({
+        message: 'Sign-in successful',
+        idToken: idToken
+    });
+} catch (error) {
+    res.status(401).json({
+        message: 'Error signing in',
+        error: error.message
+    });
+}
+});
 
 
 
