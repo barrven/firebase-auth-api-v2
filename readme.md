@@ -1,4 +1,4 @@
-# about
+# About
 
 This project is a REST API built using Node.js and the firebase admin SDK.
 
