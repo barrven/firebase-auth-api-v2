@@ -32,6 +32,11 @@ Before setting up and running this project, ensure you have the following instal
     "dev": "nodemon index.js"
     ```
 
+    Then you can call this script with:
+    ```bash
+    npm run dev
+    ```
+
 2. **Create a Firebase project in the cloud console**
 
     - Create a project in the [cloud console](https://console.firebase.google.com/). 
