@@ -9,7 +9,7 @@ Before setting up and running this project, ensure you have the following instal
 - [Node.js](https://nodejs.org/en/) (v18 or later)
 - [NPM](https://www.npmjs.com/)
 
-## To Create the project from skratch
+## To Create the Project From Scratch
 
 1. **Set Up Node.js and Express**
 
